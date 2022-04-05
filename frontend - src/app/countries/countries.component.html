@@ -1,0 +1,43 @@
+<header>
+    <br>
+</header>
+
+<body>
+
+    <div class='container-fluid container-table'>
+        <table class="table  table-striped table-hover">
+            <thead class="table-header">
+                <th>Flag</th>
+                <th>Country</th>
+                <th>Number of sportsmen</th>
+            </thead>
+            <tbody>
+                <tr class="rows" *ngFor="let c of allCountries | paginate: {
+                    itemsPerPage:itemsPerPage,
+                    currentPage:page,
+                    id: 'country'
+                }">
+                    <td>
+                        <img src='{{c.path}}' class='flags' alt="{{c.abv}}">
+                    </td>
+                    <td>
+                        {{c.name}}
+                    </td>
+                    <td>
+                        {{c.totalSportsmen}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagination">
+            <pagination-controls directionLinks="true" responsive="true" previousLabel="Prev" nextLabel="Next"
+                maxsize="5" (pageChange)="page = $event" id="country">
+            </pagination-controls>
+        </div>
+    </div>
+
+</body>
+
+<footer>
+
+</footer>

@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+body, html { 
+    background: url("/assets/images/login1bg.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    justify-content: center;
+    align-content: center;
+    margin: 0;
+    height: 100%;
+    width: 100%;    
+    text-transform: uppercase;
+}
+.main {
+    justify-content: center;
+    align-content: center;
+}
+
+
+  .navbar .navbar-brand {
+    padding-top: 0px;
+    height: 40px;
+    width: auto;
+    
+  }
+
+
+  .navbar-font {
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #0e2046;
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+ 
+.success {
+  color : rgb(148, 247, 181);    
+  font-weight: 500;
+  border-radius: 300px;
+  block-size: auto;
+}
+
+.warning {
+  color: rgb(216, 0, 0);
+  font-weight: 500;
+  border-radius: 300px;
+  block-size: auto;
+}

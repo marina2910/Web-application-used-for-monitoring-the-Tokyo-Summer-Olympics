@@ -1,0 +1,52 @@
+.body {
+    width: 100%;
+}
+
+.container-fluid {
+    flex-direction: column;
+}
+
+.btn {
+    box-sizing: border-box;
+    font-weight: 300;
+    border-radius: 300px;
+    text-transform: uppercase;
+}
+
+.btn-secondary:hover {
+    background-color: #0e2046;
+    border-color: #0e2046;
+    border-width: 4px;
+}
+
+.form-control {
+    box-sizing: border-box;
+    border-radius: 300px;
+}
+
+.flags {
+    height: 35px;
+    width: auto;
+}
+
+.container-table {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.table-header {
+    background-color: #0e2046;
+    color: white;
+    font-weight: 300;
+}
+
+.navbar {
+    background-color: #0e2046
+}
+
+
+.rows{ 
+    background: #b0b4be;
+}
+

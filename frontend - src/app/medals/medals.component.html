@@ -1,0 +1,56 @@
+<header>
+    <br>
+</header>
+
+<body>
+
+    <div class='container-table'>
+        <table class="table  table-striped table-hover">
+            <thead class="table-header">
+                <th>Rank</th>
+                <th>Country</th>
+                <th>Golden medals</th>
+                <th>Silver medals</th>
+                <th>Bronze medals</th>
+                <th>Total</th>
+
+            </thead>
+            <tbody>
+                <tr class="rows" *ngFor="let c of allCountries | paginate: {
+                    itemsPerPage:itemsPerPage,
+                    currentPage:page,
+                    id: 'medal'
+                }">
+                    <td>
+                        {{c.rank}}
+                    </td>
+                    <td>
+                        {{c.name}}
+                    </td>
+                    <td>
+                        {{c.golden}}
+                    </td>
+                    <td>
+                        {{c.silver}}
+                    </td>
+                    <td>
+                        {{c.bronze}}
+                    </td>
+                    <td>
+                        {{c.total}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagination">
+            <pagination-controls directionLinks="true" responsive="true" previousLabel="Prev" nextLabel="Next"
+                maxsize="5" (pageChange)="page = $event" id="medal">
+            </pagination-controls>
+        </div>
+    </div>
+
+</body>
+
+<footer>
+
+</footer>

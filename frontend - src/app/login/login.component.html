@@ -1,0 +1,199 @@
+<body>
+
+    <!-- MAIN BUTTONS -->
+
+    <div class="sect1">
+        <div class="row gy-5">
+            <button type="button" class="btn btn-primary btn-xl" data-bs-toggle="modal" data-bs-target="#loginModal">Log
+                in</button> <br>
+            <button type="button" class="btn btn-primary btn-xl" data-bs-toggle="modal"
+                data-bs-target="#registerModal">Register</button> <br>
+            <button type="button" class="btn btn-primary btn-xl" data-bs-toggle="modal"
+                data-bs-target="#changePassword">Change password</button>
+        </div>
+
+    </div>
+
+
+    <!-- LOGIN FORM -->
+
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Log in</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        (click)='close()'></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                            <input type="text" class="form-control" name="username"
+                                aria-describedby="inputGroup-sizing-default" [(ngModel)]='username' required>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                            <input type="password" class="form-control" name="password"
+                                aria-describedby="inputGroup-sizing-default" [(ngModel)]='password' required>
+                        </div>
+                        <div name='validation' class="warning" *ngIf="invalid">
+                            Wrong username or password!
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        (click)='close()'>Cancel</button>
+                    <button type="button" class="btn btn-primary" (click)='login()'>Log in</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- REGISTRATION FORM -->
+
+
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Register</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+
+                <div class="modal-body">
+                    <form>
+                        <table>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text col-6" id="inputGroup-sizing-default">Username</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    name='username' [(ngModel)]='newUser.username'
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text col-6" id="inputGroup-sizing-default">Password</span>
+                                <input type="password" class="form-control" aria-label="Sizing example input"
+                                    name='password' [(ngModel)]='newUser.password'
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text col-6" id="inputGroup-sizing-default">Confirm
+                                    password</span>
+                                <input type="password" class="form-control" aria-label="Sizing example input"
+                                    name='confirmpass' [(ngModel)]='newUser.confirmPassword'
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text col-6" id="inputGroup-sizing-default">Name</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input" name='name'
+                                    [(ngModel)]='newUser.name' aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text col-6" id="inputGroup-sizing-default">Surame</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input" name='surname'
+                                    [(ngModel)]='newUser.surname' aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text col-6" id="inputGroup-sizing-default">Nationality</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input"
+                                    name='nationality' [(ngModel)]='newUser.country'
+                                    aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text col-6" id="inputGroup-sizing-default">E-mail</span>
+                                <input type="text" class="form-control" aria-label="Sizing example input" name='email'
+                                    [(ngModel)]='newUser.email' aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <label class="input-group-text" for="inputGroupSelect01 "
+                                   >Type</label>
+                                <select class="form-select" id="inputGroupSelect01" name='type'  [(ngModel)]='type'>
+                                    <option  value="1 ">Delegate</option>
+                                    <option value="2" >Leader of national delegacy</option>
+                                </select>
+                            </div>
+                        </table>
+                    </form>
+                </div>
+                <div name='validation' class="warning" *ngIf="leader">
+                    Leader of {{newUser.country}} is already registered!
+                </div>
+                <div name='validation' class="warning" *ngIf="taken">
+                    Username is taken!
+                </div>
+                <div name='validation' class="warning" *ngIf="notMatching">
+                    Password is not matching!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" (click)='register()'>Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHANGE PASSWORD FORM -->
+
+    <div class="modal fade" id="changePassword" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Change password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" (click)='close()'
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input" name='username'
+                                aria-describedby="inputGroup-sizing-default" [(ngModel)]="changeUsername">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Old password</span>
+                            <input type="password" class="form-control" aria-label="Sizing example input"
+                                name='oldPassword' aria-describedby="inputGroup-sizing-default"
+                                [(ngModel)]="oldPassword">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">New password</span>
+                            <input type="password" class="form-control" aria-label="Sizing example input"
+                                name='newPassword' aria-describedby="inputGroup-sizing-default"
+                                [(ngModel)]="newPassword">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Confirm password</span>
+                            <input type="password" class="form-control" aria-label="Sizing example input"
+                                name='confirmPassword' aria-describedby="inputGroup-sizing-default"
+                                [(ngModel)]="confirmPassword">
+                        </div>
+                        <div name='validation' class="warning" *ngIf="notMatching">
+                            Password is not matching!
+                        </div>
+                        <div name='validation' class="warning" *ngIf="invalidCh">
+                            Password or username is incorrect!
+                        </div>
+                        <div name='validation' class="warning" *ngIf="samePassword">
+                            New password must not be same as the old one!
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        (click)='close()'>Cancel</button>
+                    <button type="button" class="btn btn-primary" (click)='changePass()'>Change password</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>

@@ -1,0 +1,229 @@
+<header>
+    <br>
+    <form>
+        <!-- BUTTONS FOR SELECTING ACTION -->
+        <div class="sect1">
+            <div class="row gy-5">
+                <button type="button" class="btn btn-primary btn-xl" href="delegate#new"><a class="links"
+                        href="delegate#new">New Sportsman</a></button> <br>
+                <button type="button" class="btn btn-primary btn-xl" href="delegate#sportsmen"><a class="links"
+                        href="delegate#sportsmen">All sportsmen</a></button> <br>
+                <button type="button" class="btn btn-primary btn-xl" href="delegate#registerForCompetition"><a
+                        class="links" href="delegate#registerForCompetition">Register sportsman for
+                        competition</a></button> <br>
+            </div>
+        </div>
+        <br><br>
+        <hr>
+        <br>
+    </form>
+</header>
+
+<body>
+
+    <!-- ADD NEW SPORTSMAN -->
+    <div class='container-fluid' id='new'>
+        <output class="title">Add new sportsman</output>
+        <br>
+        <form class="container-fluid bckg">
+            <!-- Name and surname -->
+            <div class="row gy-2 mb-3 container-fluid">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Name and surname</label>
+                <br>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" [(ngModel)]="newSportman.name"
+                        name='name'>
+                </div>
+            </div>
+
+
+            <!-- Sports -->
+            <div class="row gy-2 mb-3 container-fluid">
+                <label for='sportSelect' class="col-sm-2 col-form-label input-group-text">Sports</label>
+                <div class="col-sm-10">
+                    <select id='sportSelect' class="form-select" (change)="findDisciplines($event.target.value)"
+                        [(ngModel)]='newSportman.sport' name='sport'>
+                        <option [ngValue]="undefined" disabled selected hidden>Choose sport</option>
+                        <option *ngFor='let s of sportNames' value='{{s}}'>{{s}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Sport discipline -->
+            <div class="row gy-2 mb-3 container-fluid">
+                <label for='discpSelect' class="col-sm-2 col-form-label input-group-text">Sport discipline</label>
+                <div class="col-sm-10">
+                    <select id='discpSelect' class="form-select" [(ngModel)]='selectedDiscipline' name='discipline'>
+                        <option [ngValue]="undefined" disabled selected hidden>Choose discipline</option>
+                        <option *ngFor='let d of disciplineNames' value='{{d}}'>{{d}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Gender -->
+            <div class="row gy-2 mb-3 container-fluid">
+                <legend class="col-sm-2 col-form-label input-group-text">Gender</legend>
+                <div class="col-sm-10">
+                    <div class="form-check col-sm-5">
+                        <input class="form-check-input col-sm-2 " type="radio" [(ngModel)]='newSportman.gender'
+                            name="gridRadios" id="gridRadios1" value="m" checked>
+                        <label class="form-check-label col-sm-2 " for="gridRadios1">
+                            Male
+                        </label>
+                    </div>
+                    <div class="form-check col-sm-5">
+                        <input class="form-check-input" type="radio" [(ngModel)]='newSportman.gender' name="gridRadios"
+                            id="gridRadios2" value="f">
+                        <label class="form-check-label" for="gridRadios2">
+                            Female
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUBMIT BUTTON -->
+            <button class="btn btn-secondary" (click)='insertNewSportsman()'>Add</button>
+            <div name='success' class='success' *ngIf='message != null'>{{message}}</div>
+            <div name='warning' class='warning' *ngIf='warning != null '>{{warning}}</div>
+
+        </form>
+
+    </div>
+
+    <br><br>
+    <hr>
+    <!-- ALL SPORTSMEN -->
+    <div class="container-fluid" id='sportsmen'>
+        <div class='container-table'>
+            <output class="title">ALL SPORTSMEN REPRESENTING MY COUNTRY</output>
+            <br>
+            <table class="table  table-striped table-hover">
+                <thead class="table-header">
+                    <th>Name and surname</th>
+                    <th>Country</th>
+                    <th>Sport</th>
+                    <th>Discipline</th>
+                    <th>Gender</th>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let s of mySportsmen">
+                        <tr class="rows">
+                            <td>
+                                {{s.name}}
+                            </td>
+                            <td>
+                                {{s.country}}
+                            </td>
+                            <td>
+                                {{s.sport}}
+                            </td>
+                            <td>
+                                {{s.discipline}}
+                            </td>
+                            <td>
+                                {{s.gender}}
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+    <br><br>
+    <hr>
+    <!-- REGISTER SPORTSMEN TO COMPETITION -->
+    <div class='container-fluid' id='registerForCompetition'>
+        <output class="title">Register sportsman for competition</output>
+        <br>
+
+        <form class="container-fluid bckg">
+            <!-- Type -->
+            <div class="row gy-2 mb-3 container-fluid">
+                <legend class="col-sm-2 col-form-label input-group-text">Type</legend>
+                <div class="col-sm-10">
+                    <div class="form-check col-sm-5">
+                        <input class="form-check-input col-sm-2 " type="radio" [(ngModel)]='selectedType'
+                            name="gridRadios" id="gridRadios1" value="i" checked>
+                        <label class="form-check-label col-sm-2 " for="gridRadios1">
+                            Individual
+                        </label>
+                    </div>
+                    <div class="form-check col-sm-5">
+                        <input class="form-check-input" type="radio" [(ngModel)]='selectedType' name="gridRadios"
+                            id="gridRadios2" value="e">
+                        <label class="form-check-label" for="gridRadios2">
+                            Equip
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- Gender -->
+            <div class="row gy-2 mb-3 container-fluid">
+                <legend class="col-sm-2 col-form-label input-group-text">Gender</legend>
+                <div class="col-sm-10">
+                    <div class="form-check col-sm-5">
+                        <input class="form-check-input col-sm-2 " type="radio" [(ngModel)]='selectedGender'
+                            name="gridRadios2" id="gridRadios2" value="m" checked>
+                        <label class="form-check-label col-sm-2 " for="gridRadios2">
+                            Male
+                        </label>
+                    </div>
+                    <div class="form-check col-sm-5">
+                        <input class="form-check-input" type="radio" [(ngModel)]='selectedGender' name="gridRadios2"
+                            id="gridRadios2" value="f">
+                        <label class="form-check-label" for="gridRadios2">
+                            Female
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <!-- Sports -->
+            <div class="row gy-2 mb-3 container-fluid">
+                <label for='sportSelect' class="col-sm-2 col-form-label input-group-text">Sports</label>
+                <div class="col-sm-10">
+                    <select id='sportSelect' class="form-select" (change)="findDisciplines($event.target.value)"
+                        [(ngModel)]='selectedSport' name='sport'>
+                        <option [ngValue]="undefined" disabled selected hidden>Choose sport</option>
+                        <option *ngFor='let s of sportNames' value='{{s}}'>{{s}}</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Sport discipline -->
+            <div class="row gy-2 mb-3 container-fluid">
+                <label for='discpSelect' class="col-sm-2 col-form-label input-group-text">Sport discipline</label>
+                <div class="col-sm-10">
+                    <select id='discpSelect' class="form-select" (change)="findSportsmen($event.target.value)"
+                        [(ngModel)]='selectedDiscipline' name='discipline'>
+                        <option [ngValue]="undefined" disabled selected hidden>Choose discipline</option>
+                        <option *ngFor='let d of disciplineNames' value='{{d}}'>{{d}}</option>
+                    </select>
+                </div>
+            </div>
+            <!-- My sportsmen -->
+            <div class="row gy-2 mb-3 container-fluid">
+                <label for='sportSelect' class="col-sm-2 col-form-label input-group-text">Name and surname</label>
+                <div class="col-sm-10">
+                    <select id='sportSelect' class="form-select multiple-select" [(ngModel)]='selectedSportsman'
+                        name='sport' multiple>
+                        <option [ngValue]="undefined" selected disabled>Choose sportsman</option>
+                        <option *ngFor='let s of chosedSportsmen'>{{s.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- SUBMIT BUTTON -->
+            <button class="btn btn-secondary" (click)='registerForCompetition()'>Register for competition</button>
+            <div name='warning' class='warning' *ngIf='warning2 != null '>{{warning2}}</div>
+        </form>
+    </div>
+
+
+    <br><br>
+    <hr>
+</body>
+<footer>
+
+</footer>

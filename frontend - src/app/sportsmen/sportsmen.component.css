@@ -1,0 +1,55 @@
+.btn {
+    box-sizing: border-box;
+    font-weight: 300;
+    border-radius: 300px;
+    text-transform: uppercase;
+}
+
+
+.btn-secondary:hover {
+    background-color: #0e2046;
+    border-color: #0e2046;
+    border-width: 4px;
+}
+
+
+.middle {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.form-select {
+    box-sizing: border-box;
+    border-radius: 300px;
+}
+
+.form-control {
+    box-sizing: border-box;
+    border-radius: 300px;
+}
+
+.bckg {
+    width: 50%;
+    background: #0e2046;
+    color: white;
+
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.bckg:hover {
+    background-color: #0c1a38;
+    border-color: #445069;
+    border-width: 4px;
+
+}
+.table-header {
+    background-color: #0e2046;
+    color: white;
+    font-weight: 300;
+}
+
+.rows{ 
+    background: #b0b4be;
+}

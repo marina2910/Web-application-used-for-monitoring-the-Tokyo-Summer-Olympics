@@ -1,0 +1,67 @@
+<header>
+    <br>
+    <form>
+        <!-- BUTTONS FOR SELECTING ACTION -->
+        <div class="sect1">
+            <div class="row gy-5">
+                <button type="button" class="btn btn-primary btn-xl" href="leader#scheduleI"><a class="links"
+                        href="leader#scheduleI">Add schedule for individual competition</a></button> <br>
+                <button type="button" class="btn btn-primary btn-xl" href="leader#scheduleE"><a class="links"
+                        href="leader#scheduleE">Add schedule for equip competition</a></button> <br>
+            </div>
+        </div>
+        <br><br>
+        <hr>
+        <br>
+    </form>
+</header>
+
+<body>
+    <div id='scheduleI'>
+        <div class='container-table'>
+            <output class="title">Add schedule for individual competition</output>
+            <br>
+            <table class="table  table-striped table-hover">
+                <thead class="table-header">
+                    <th>Sport</th>
+                    <th>Discipline</th>
+                    <th>Type</th>
+                    <th>Location</th>
+                    <th>Gender</th>
+                    <th>Finals start date</th>
+                    <th>Add</th>
+                    <th></th>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let c of allCompetitions">
+                        <tr class="rows" *ngIf='!c.scheduled'>
+                            <td>
+                                {{c.sport}}
+                            </td>
+                            <td>
+                                {{c.discipline}}
+                            </td>
+                            <td>
+                                {{c.type}}
+                            </td>
+                            <td>
+                                {{c.location}}
+                            </td>
+                            <td>
+                                {{c.gender}}
+                            </td>
+                            <td>
+                                <input type="date" class="form-control" [(ngModel)]="startingDateTime"
+                                    name='dateTime'>
+                            </td>
+                            <td>
+                                <button class="btn btn-primary" (click)="schedule(c)">Add to schedule</button>
+                            </td>
+                            <td>{{c.message}}</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>

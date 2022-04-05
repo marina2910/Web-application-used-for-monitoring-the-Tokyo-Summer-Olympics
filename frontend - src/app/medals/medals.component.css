@@ -1,0 +1,39 @@
+.body {
+    width: 100%;
+}
+
+.btn {
+    box-sizing: border-box;
+    font-weight: 300;
+    border-radius: 300px;
+    text-transform: uppercase;
+}
+
+.btn-secondary:hover {
+    background-color: #0e2046;
+    border-color: #0e2046;
+    border-width: 4px;
+}
+
+.form-control {
+    box-sizing: border-box;
+    border-radius: 300px;
+}
+
+.container-table {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+.table-header {
+    background-color: #0e2046;
+    color: white;
+    font-weight: 300;
+}
+
+.rows{ 
+    background: #b0b4be;
+}

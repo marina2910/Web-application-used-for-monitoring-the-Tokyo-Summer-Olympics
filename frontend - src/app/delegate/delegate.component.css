@@ -1,0 +1,104 @@
+.links {
+    color: white;
+    text-decoration: none;
+}
+.sect1 {
+    display: flex;
+    align-content: center;
+    margin-left: 15px;
+}
+.btn {
+    box-sizing: border-box;
+    font-weight: 300;
+    border-radius: 300px;
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background-color: #0e2046;
+    border-color: #0e2046;
+}
+
+.btn-primary:hover {
+    background-color: #0548da;
+    border-color: #0548da;
+    border-width: 4px;
+}
+
+.btn-secondary:hover {
+    display: flex;
+    background-color: #0e2046;
+    border-color: #0e2046;
+    border-width: 4px;
+    justify-content: center;
+}
+
+.rows{ 
+    background: #b0b4becb;
+}
+
+.table-header {
+    background-color: #0e2046;
+    color: white;
+    font-weight: 300;
+}
+
+
+.title{
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    background-color: #0e2046a4;
+    border-color: #0e2046;
+    color: white;    
+    font-weight: 600;
+    
+}
+
+.input-group-text{ 
+    background-color: #0e2046;
+    color: white;
+    box-sizing: border-box;
+    font-weight: 300;
+    border-radius: 300px;
+    border-color: #0e2046;
+    width: 180px;
+}
+
+.bckg {
+    width: 60%;
+    background: #0e2046;
+    color: white;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.form-select {
+    box-sizing: border-box;
+    border-radius: 300px;
+}
+
+.multiple-select {
+    border-radius: 30px;
+
+}
+.form-control {
+    box-sizing: border-box;
+    border-radius: 300px;
+}
+
+.success {
+    color : rgb(148, 247, 181);    
+    font-weight: 500;
+    border-radius: 300px;
+    block-size: auto;
+}
+
+.warning {
+    color: rgb(216, 0, 0);
+    font-weight: 500;
+    border-radius: 300px;
+    block-size: auto;
+}
+
